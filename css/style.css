@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-size: 1.5em;
+}
+input{
+    padding: 10px;
+    font-size: 1.1;
+    border-radius: 10px;
+}
+button{
+    padding: 10px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid;
+    text-align: center;
+}
+td, th{
+    border: 2px solid;
+}
+form{
+    text-align: center;
+}
+
+.one, .two{
+    border: 2px dotted black;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 50px;
+}
