@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+table{
+    width: 100%;
+}
+.one, .two{
+    border: 2px dotted black;
+    padding: 50px;
+    margin: 10px;
+    text-align: center;
+}
+td, th{
+    border: 2px solid;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid;
+    text-align: center;
+}
+button{
+    padding: 10px;
+    cursor: pointer;
+}
+input{
+    padding: 10px;
+    font-size: 1.1em;
+}
+img{
+    width: 300px;
+    border-radius: 50px;
+}
