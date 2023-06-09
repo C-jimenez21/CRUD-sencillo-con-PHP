@@ -1,3 +1,34 @@
+<?php
+    $URL = "https://6480e3aef061e6ec4d4a000d.mockapi.io/Informacion";
+
+    $credenciales["http"]["method"] = "GET";
+    $credenciales["http"]["header"] = "Content-type: application/json";
+    
+    $data = [
+        "Nombre"=> "Nombre 18",
+        "Apellido"=> "Apellido 18",
+        "Direccion"=> "Direccion 18",
+        "Edad"=> 18,
+        "Email"=> "Email 18",
+        "Horario"=> 1686285833,
+        "TEAM"=> "TEAM 18",
+        "Trainer"=> "Trainer 18",
+        "id"=> "18"
+    ];
+    
+    $data = json_encode($data);
+    $credenciales["http"]["content"] = $data;
+    $config = stream_context_create($credenciales);
+    $DATA = file_get_contents($URL, false, $config);
+    echo "<pre>";
+    var_dump($DATA);
+    echo "</pre>";
+    
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +39,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <div class="container mt-5">
@@ -41,11 +71,11 @@
                 </div>
             </div>
         </div>
-<div class="two">
+    <div class="two">
         <div class="row">
             <div class="col-6 mb-3">
-                <label class="form-label">Fecha</label>
-                <input type="time" class="form-control" name="fecha" placeholder="Ingrese fecha">
+                <label class="form-label">Horario</label>
+                <input type="time" class="form-control" name="hora">
             </div>
             <div class="col"></div>
             <div class="col-1">
@@ -87,24 +117,22 @@
     
     <table>
         <thead>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Direccion</th>
+            <th>Edad</th>
+            <th>Email</th>
+            <th>Horario</th>
+            <th>Team</th>
+            <th>Trainer</th>
+            <th>Action</th>
         </thead>
         <tbody>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
+         <?php
+            foreach ($variable as $key => $value) {
+                echo "<td>$va</td>";
+            }
+         ?>
         </tbody>
     </table>
 
