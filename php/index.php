@@ -17,12 +17,7 @@
         }
         
     }
-    //existe? 
-    
-    //se pudo crear
-    
-    
-    //agregar
+
     function addDAta($data){
         if(validateInput($data)){
             global $URL;
@@ -98,25 +93,12 @@
                 case "buscar":
                     $getInfo = searchID($_POST["Cedula"]);
                     break;
-            }
+                default:
+                    $getInfo = searchID($accion);
+            }   
         }
-        
-        
-        
-        
-        
         $DATA = file_get_contents($URL);
         
-        
-        /*$opts = array(
-            'http'=>array(
-                'method'=>"GET",
-                'header'=>"Content-type: application/json",
-                "content" => json_encode($data)
-        )
-      );
-      $config = stream_context_create($opts);
-    */
 ?>
 
 
@@ -167,7 +149,7 @@
         <div class="row">
             <div class="col-6 mb-3">
                 <label class="form-label">Horario</label>
-                <input type="time" name="Hora" value ="<?php isset($getInfo["Horario"]) ? print $getInfo["Horario"] : print "" ?>">
+                <input type="time" name="Horario" value ="<?php isset($getInfo["Horario"]) ? print $getInfo["Horario"] : print "" ?>">
             </div>
             <div class="col"></div>
             <div class="col-1">
@@ -206,7 +188,6 @@
             </div>
         </div>
         </div>
-    </form>
     
     <table class="table mt-5">
         <thead>
@@ -236,14 +217,14 @@
                     <td>{$parametro["Horario"]}</td>
                     <td>{$parametro["Team"]}</td>
                     <td>{$parametro["Trainer"]}</td>
-                    <td><button>i</button></td>
+                    <td><button type='submit' name='btn' value='{$parametro["Cedula"]}'>🔼  </button></td>
                 </tr>
                 ";
             }
          ?>
         </tbody>
     </table>
-
+    </form>
 </div>
 
 </body>
