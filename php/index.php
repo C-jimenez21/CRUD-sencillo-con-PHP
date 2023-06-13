@@ -1,10 +1,6 @@
 <?php
     $URL = "https://6480e3aef061e6ec4d4a000d.mockapi.io/Informacion";
     
-    //validar cedula
-    if(isset($_POST["cedula"])){
-        
-    }
     //Inputs vacios
     function validateInput($datos){
         foreach($datos as $items){
@@ -109,7 +105,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD con PHP</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
+    <!-- <link href="https://   cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../css/style2.css">
     
@@ -191,7 +187,7 @@
     
     <table class="table mt-5">
         <thead>
-            <th>Cedula</th>
+            <!--<th>Cedula</th>-->
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Direccion</th>
@@ -208,7 +204,7 @@
             foreach($arrInfo as $parametro) {
                 echo "
                 <tr>
-                    <td>{$parametro["Cedula"]}</td>
+                    <!--<td>{$parametro["Cedula"]}</td>-->
                     <td>{$parametro["Nombre"]}</td>
                     <td>{$parametro["Apellido"]}</td>
                     <td>{$parametro["Direccion"]}</td>
