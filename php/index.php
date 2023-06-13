@@ -53,7 +53,7 @@
     //eliminar
     function deleteData($cedula){
         $usuario = searchID($cedula);
-        echo "<h1>$newURL</h1>";
+        $newURL = "https://6480e3aef061e6ec4d4a000d.mockapi.io/Informacion/".$usuario["id"];
         $opts = array(
             'http'=>array(
                 "method"=> "DELETE"
@@ -63,16 +63,19 @@
             return $DATA = file_get_contents($newURL, false, $config);
         }
     //Editar
-    function editUser($cedula){
-        $usuario = searchID($cedula);
+    function editUser($data){
+        $usuario = searchID($data["Cedula"]);
+        var_dump($data["Cedula"]);
         $newURL = "https://6480e3aef061e6ec4d4a000d.mockapi.io/Informacion/".$usuario["id"];
         $opts = array(
             'http'=>array(
-                'method'=>"PUT",
+              'method'=>"PUT",
               'header'=>"Content-type: application/json",
-              "content" => json_encode($cedula)
+              "content" => json_encode($data)
               )
             );
+            var_dump($data);
+            var_dump($usuario["id"]); 
             $config = stream_context_create($opts);
         return $DATA = file_get_contents($newURL, false, $config);
     }
@@ -86,14 +89,15 @@
                 case "confirmar":
                     addDAta($datos);
                     break;
-                    case "eliminar":
-                        deleteData($_POST["Cedula"]);
-                        break;
-                        case "buscar":
-                            $getInfo = editUser($_POST["Cedula"]);
-                            break;
-            case "editar":
-                break;
+                case "eliminar":
+                    deleteData($_POST["Cedula"]);
+                    break;
+                case "editar":
+                    $getInfo = editUser($datos);
+                    break;
+                case "buscar":
+                    $getInfo = searchID($_POST["Cedula"]);
+                    break;
             }
         }
         
@@ -135,15 +139,15 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
-                    <input type="text" name="Nombre" placeholder="Ingrese nombre" value ="<?php if(isset($getInfo["Nombre"])) ? print $getInfo["Nombre"] : print "" ?>">
+                    <input type="text" name="Nombre" placeholder="Ingrese nombre" value ="<?php isset($getInfo["Nombre"]) ? print $getInfo["Nombre"] : print "" ?>">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Apellido</label>
-                  <input type="text" name="Apellido" placeholder="Ingrese apellido"value ="<?php if(isset($getInfo["Apellido"])) ? print $getInfo["Apellido"] : print "" ?>">
+                  <input type="text" name="Apellido" placeholder="Ingrese apellido"value ="<?php isset($getInfo["Apellido"]) ? print $getInfo["Apellido"] : print "" ?>">
                 </div>
                 <div class="mt-4">
                   <label class="form-label">Direccion</label>
-                  <input type="text" name="Direccion" placeholder="Ingrese direccion" value ="<?php if(isset($getInfo["Direccion"])) ? print $getInfo["Direccion"] : print "" ?>">
+                  <input type="text" name="Direccion" placeholder="Ingrese direccion" value ="<?php isset($getInfo["Direccion"]) ? print $getInfo["Direccion"] : print "" ?>">
                 </div>
             </div>
             <div class="col-6">
@@ -151,11 +155,11 @@
                 <!-- <h1 class="display-3">Campuslands</h1> -->
                 <div class="mb-3 mt-3">
                   <label class="form-label">Edad</label>
-                  <input type="number" name="Edad" placeholder="Ingrese edad" value ="<?php if(isset($getInfo["Edad"])) ? print $getInfo["Edad"] : print "" ?>">
+                  <input type="number" name="Edad" placeholder="Ingrese edad" value ="<?php isset($getInfo["Edad"]) ? print $getInfo["Edad"] : print "" ?>">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Email</label>
-                  <input type="email" name="Email" placeholder="Ingrese email" value ="<?php if(isset($getInfo["Email"])) ? print $getInfo["Email"] : print "" ?>">
+                  <input type="text" name="Email" placeholder="Ingrese email" value ="<?php isset($getInfo["Email"]) ? print $getInfo["Email"] : print "" ?>">
                 </div>
             </div>
         </div>
@@ -163,7 +167,7 @@
         <div class="row">
             <div class="col-6 mb-3">
                 <label class="form-label">Horario</label>
-                <input type="time" name="Hora" value ="<?php if(isset($getInfo["Horario"])) ? print $getInfo["Horario"] : print "" ?>">
+                <input type="time" name="Hora" value ="<?php isset($getInfo["Horario"]) ? print $getInfo["Horario"] : print "" ?>">
             </div>
             <div class="col"></div>
             <div class="col-1">
@@ -178,7 +182,7 @@
         <div class="row">
             <div class="col-6 mb-3">
                 <label class="form-label">Team</label>
-              <input type="text" name="Team" placeholder="Ingrese team" value ="<?php if(isset($getInfo["Team"])) ? print $getInfo["Team"] : print "" ?>">
+              <input type="text" name="Team" placeholder="Ingrese team" value ="<?php isset($getInfo["Team"]) ? print $getInfo["Team"] : print "" ?>">
            </div>
            <div class="col"></div>
             <div class="col-1">
@@ -194,11 +198,11 @@
         <div class="row">
             <div class="col-6 mb-3">
               <label class="form-label">Trainer</label>
-              <input type="text" name="Trainer" placeholder="Ingrese trainer" value ="<?php if(isset($getInfo["Trainer"])) ? print $getInfo["Trainer"] : print "" ?>">
+              <input type="text" name="Trainer" placeholder="Ingrese trainer" value ="<?php isset($getInfo["Trainer"]) ? print $getInfo["Trainer"] : print "" ?>">
             </div>
             <div class="col-6 mb-3">
               <label class="form-label">Cedula</label>
-              <input type="number" name="Cedula" placeholder="Ingrese cedula">
+              <input type="number" name="Cedula" placeholder="Ingrese cedula" value="<?php isset($getInfo["Cedula"])? print $getInfo["Cedula"] : print "" ?>">
             </div>
         </div>
         </div>
